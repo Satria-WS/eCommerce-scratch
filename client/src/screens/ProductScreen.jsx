@@ -6,7 +6,7 @@ import products from "../data/product";
 const ProductScreen = () => {
   const { id: productId } = useParams(); // Assuming 'id' is the key in the URL parameter
   const product = products.find((p) => p._id === parseInt(productId));
-  // console.log(product);
+
 
   return (
     <>
