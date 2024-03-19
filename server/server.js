@@ -9,7 +9,7 @@ const connectMongo = async () => await connectDb();
 connectMongo();
 const app = express();
 
-app.use(cors());
+app.use(cors({origin: true}));
 
 app.get("/", (req, res) => {
   res.send("API is running...");
