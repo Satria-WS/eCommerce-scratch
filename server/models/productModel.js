@@ -1,21 +1,31 @@
 import mongoose from "mongoose";
 
-const { Schema , model } = mongoose;
+const { Schema, model } = mongoose;
 
-const reviewSchema = new Schema({
-  name: {
-    type: String,
-    required: true
+const reviewSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    rating: {
+      type: String,
+      required: true,
+    },
+    comment: {
+      type: String,
+      required: true,
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
+    },
   },
-  rating: {
-    type: String,
-    required: true
-  },
-  comment: {
-    type: String,
-    required: true
+  {
+    timestamps: true,
   }
-})
+);
 const productSchema = new Schema(
   {
     user: {
@@ -70,6 +80,4 @@ const productSchema = new Schema(
   }
 );
 
-
-
-export const Product = new model('Product', productSchema);
+export const Product = new model("Product", productSchema);
