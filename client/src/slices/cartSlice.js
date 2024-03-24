@@ -16,8 +16,12 @@ const cartSlice = createSlice({
           x._id === existItem._id ? item : x
         );
       } else {
-        state.cartItems = [...state.cartItems,item];
+        state.cartItems = [...state.cartItems, item];
       }
+      //Calculate  items price
+      state.itemsPrice = state.cartItems.reduce(
+        (acc, item) => acc + item.price * item
+      );
     },
   },
 });
