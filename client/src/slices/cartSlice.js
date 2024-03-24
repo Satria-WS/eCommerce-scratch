@@ -37,8 +37,10 @@ const cartSlice = createSlice({
         Number(state.shippingPrice) +
         Number(state.taxPrice)
       ).toFixed(2);
+      localStorage.setItem("cart", JSON.stringify(state));
     },
   },
 });
+export const { addToCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
