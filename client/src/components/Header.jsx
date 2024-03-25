@@ -1,4 +1,4 @@
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, Badge } from "react-bootstrap";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { LinkContainer } from "react-router-bootstrap";
 import { useSelector } from "react-redux";
@@ -6,7 +6,10 @@ import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
-  console.log(cartItems);
+  console.log(cartItems.cartItems.length);
+  const badgeStyle = {
+    marginLeft: "5px",
+  };
   return (
     <header>
       <Navbar bg="dark" variant="dark" expand="lg" collapsenonselect="true">
@@ -23,6 +26,11 @@ const Header = () => {
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <FaShoppingCart /> Cart
+                  {cartItems.cartItems.length > 0 && (
+                    <Badge pill bg="success" style={badgeStyle}>
+                      {cartItems.cartItems.reduce((a, b) => a + b.qty, 0)}
+                    </Badge>
+                  )}
                 </Nav.Link>
               </LinkContainer>
               <LinkContainer to="/login">
