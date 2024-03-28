@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
-  console.log(cartItems.cartItems.length);
+
   const badgeStyle = {
     marginLeft: "5px",
   };
@@ -26,9 +26,9 @@ const Header = () => {
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <FaShoppingCart /> Cart
-                  {cartItems.cartItems.length > 0 && (
+                  {cartItems.length > 0 && (
                     <Badge pill bg="success" style={badgeStyle}>
-                      {cartItems.cartItems.reduce((a, b) => a + b.qty, 0)}
+                      {cartItems.reduce((a, b) => a + b.qty, 0)}
                     </Badge>
                   )}
                 </Nav.Link>
